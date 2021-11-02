@@ -5,3 +5,6 @@ export default function DelTransaction(){
         <div>X</div>
     )
 }
+
+
+

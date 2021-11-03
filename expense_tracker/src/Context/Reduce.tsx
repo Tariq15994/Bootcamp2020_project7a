@@ -1,4 +1,17 @@
+import { Actions, TransactionType } from "../Types/TransactionType";
 
+export const TransactionReducer = (state:{Transaction:TransactionType[]}, action:Actions){
+    switch (action.type) {
+        case 'ADD_TRANSACTION':
+            return {
+                ...state,
+                Transaction: [action.payload, ...state.Transaction]
+            };
+        default:
+            return state;
+
+    }
+}
 
 
 

@@ -1,4 +1,41 @@
+import React , {createContext, useReducer} from 'react';
+import AddTransaction from '../components/AddTransaction';
+import { initialStateType, TransactionType } from '../Types/TransactionType';
+import { TransactionReducer } from './Reduce';
 
+const initialstate:initialStateType = {
+    Transaction:[{
+        id:1,
+        text:'cash',
+        amount: 200
+    }],
+    addTransaction:() => {},
+    deleteTransaction:() => {}
+}
+
+// export default function 
+
+
+
+export const TransactionContext = createContext(initialstate);
+
+export const TransactionProvider= ({children})=>{
+    const [state, dispatch] = useReducer(TransactionReducer,initialstate)
+
+    function addTransaction(transactionData:TransactionType){
+        dispatch({
+            type:'ADD_TRANSACTION',
+            payload:transactionData
+        })
+        return(
+
+        )
+    }
+
+    return (
+        <TransactionContext.Provider value={}    
+    )
+};
 
 
 

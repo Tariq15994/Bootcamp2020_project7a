@@ -117,10 +117,12 @@
 .income-value{
   padding: 3px 0px 0px 15px;
   margin: 0px;
+  color: white;
 }
 .expense-value{
   padding: 3px 0px 0px 15px;
   margin: 0px;
+  color: white;
 
 }
 .balance-container{

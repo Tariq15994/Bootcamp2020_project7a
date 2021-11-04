@@ -1,17 +1,22 @@
 import { Actions, TransactionType } from "../Types/TransactionType";
 
-export const TransactionReducer = (state:{Transaction:TransactionType[]}, action:Actions){
+export const TransactionReducer = (state: {Transaction:TransactionType[]}, action:Actions)=>{
     switch (action.type) {
         case 'ADD_TRANSACTION':
             return {
                 ...state,
                 Transaction: [action.payload, ...state.Transaction]
             };
+        case 'DELETE_TRANSACTION':
+            return {
+                ...state,
+                Transaction: state.Transaction.filter(
+                    (transaction)=> transaction.id !== action.payload),
+            }
         default:
             return state;
-
     }
-}
+};
 
 
 

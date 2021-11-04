@@ -13,11 +13,11 @@ export type initialStateType = {
   //context/TransactionReducer Actions Type
   export type Actions =
     | { 
-        type: "Delete_Transaction";
+        type: "DELETE_TRANSACTION";
          payload: number 
     }
     | { 
-        type: "Add_Transaction";
+        type: "ADD_TRANSACTION";
         payload: TransactionType
     };
   

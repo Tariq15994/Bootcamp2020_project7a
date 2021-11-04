@@ -1,34 +1,53 @@
-import React,{useContext, useState} from "react";
+import React, { useContext, useState } from "react";
+import { TransactionContext } from "../Context/GlobalContext";
+// import addTransaction from './'
 
-export default function AddTransaction(){
-  const [amount,setAmount] = useState<number>();
-  const [text, setText] = useState<string>("");
+export default function AddTransaction() {
+  const [newAmount, setAmount] = useState<number>();
+  const [newText, setText] = useState<string>("");
 
+  const { addTransaction } = useContext(TransactionContext);
   
 
-  return(
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (newAmount === 0) {
+      console.log('Fill All Input Values')
+    }
+    let newTransaction = {
+      id: Math.floor(Math.random() * 1000),
+      text: newText,
+      amount: Number(newAmount)
+    }
+    addTransaction(newTransaction);
+    setAmount(0);
+    setText('');
+  };
+
+
+  return (
     <div>
-     
-    <h3>Add new transaction</h3>
-    <form >
-      <div className="form-control">
-        <label htmlFor="text">Transaction Belongs To</label>
-        <input type="text"   value={text}
+
+      <h3>Add new transaction</h3>
+      <form onSubmit={handleSubmit} >
+        <div className="form-control">
+          <label htmlFor="text">Transaction Belongs To</label>
+          <input type="text" value={newText}
             onChange={(e) => {
               setText(String(e.target.value));
-            }} placeholder="Details...." />
-      </div>
-      <div className="form-control">
-        <label htmlFor="amount">
+            }} placeholder="Details...." required/>
+        </div>
+        <div className="form-control">
+          <label htmlFor="amount">
             Amount </label >
-        <input type="number"   value={amount === 0 ? "" : amount}
+          <input type="number" value={newAmount === 0 ? "" : newAmount}
             onChange={(e) => {
               setAmount(Number(e.target.value));
             }} placeholder="Enter amount..." />
-      </div>
-      <button className="btn">Submit Transaction</button>
-    </form>
-  </div>
+        </div>
+        <button className="btn">Submit Transaction</button>
+      </form>
+    </div>
   )
 }
 
@@ -64,12 +83,12 @@ export default function AddTransaction(){
 //     deleteTransaction: () => {},
 //     addTransaction: () => {},
 //   };
-  
+
 //   export const TransactionContext = createContext(initialstate);
-  
+
 //   export const TransactionProvider: React.FC = ({ children }) => {
 //     const [state, dispatch] = useReducer(Reducer, initialstate);
-  
+
 //     //Actions
 //     //Actions types is handiling in  TransactionReducer
 //     // function deleteTransaction(id: number) {
@@ -78,14 +97,14 @@ export default function AddTransaction(){
 //     //     payload: id,
 //     //   });
 //     // }
-  
+
 //     function addTransaction(transactionData: TransactionType) {
 //       dispatch({
 //         type: "ADD_TRANSACTION",
 //         payload: transactionData,
 //       });
 //     }
-  
+
 //     return (
 //       <div>
 //         <TransactionContext.Provider
@@ -100,7 +119,7 @@ export default function AddTransaction(){
 //       </div>
 //     );
 //   };
-  
+
 
 
 

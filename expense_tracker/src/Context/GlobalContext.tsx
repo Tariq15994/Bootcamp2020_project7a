@@ -1,5 +1,4 @@
 import React , {createContext, useReducer} from 'react';
-import AddTransaction from '../components/AddTransaction';
 import { initialStateType, TransactionType } from '../Types/TransactionType';
 import { TransactionReducer } from './Reduce';
 
@@ -19,23 +18,36 @@ const initialstate:initialStateType = {
 
 export const TransactionContext = createContext(initialstate);
 
-export const TransactionProvider= ({children})=>{
+export const TransactionProvider:React.FC= ({children})=>{
     const [state, dispatch] = useReducer(TransactionReducer,initialstate)
 
-    function addTransaction(transactionData:TransactionType){
+    function addTransaction(transactionData:TransactionType) {
         dispatch({
             type:'ADD_TRANSACTION',
             payload:transactionData
+        });
+    }
+    function deleteTransaction(id:number){
+        dispatch({
+            type: 'DELETE_TRANSACTION',
+            payload: id,
         })
-        return(
-
-        )
     }
 
     return (
-        <TransactionContext.Provider value={}    
+        <TransactionContext.Provider value={{
+            Transaction: state.Transaction,
+            addTransaction,
+            deleteTransaction
+
+        }
+        }>
+            {children}
+            </TransactionContext.Provider>
+        
+         
     )
-};
+}
 
 
 

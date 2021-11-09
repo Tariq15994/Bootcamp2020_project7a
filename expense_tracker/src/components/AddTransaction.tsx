@@ -14,6 +14,8 @@ export default function AddTransaction() {
     if (newAmount === 0) {
       console.log('Fill All Input Values')
     }
+   
+       
     let newTransaction = {
       id: Math.floor(Math.random() * 1000),
       text: newText,
@@ -28,24 +30,26 @@ export default function AddTransaction() {
   return (
     <div>
 
-      <h3>Add new transaction</h3>
-      <form onSubmit={handleSubmit} >
+      <h3 className="history">Add new transaction</h3>
+      <hr className="hr"/>
+
+      <form onSubmit={handleSubmit} className="transaction-form" >
         <div className="form-control">
-          <label htmlFor="text">Transaction Belongs To</label>
+          <label htmlFor="text" className='desc'>Transaction Belongs To</label>
           <input type="text" value={newText}
             onChange={(e) => {
               setText(String(e.target.value));
             }} placeholder="Details...." required/>
         </div>
         <div className="form-control">
-          <label htmlFor="amount">
+          <label htmlFor="amount" className='cash'>
             Amount </label >
           <input type="number" value={newAmount === 0 ? "" : newAmount}
             onChange={(e) => {
               setAmount(Number(e.target.value));
             }} placeholder="Enter amount..." />
         </div>
-        <button className="btn">Submit Transaction</button>
+        <button className="submit">Submit Transaction</button>
       </form>
     </div>
   )

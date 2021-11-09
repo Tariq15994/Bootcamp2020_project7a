@@ -8,15 +8,17 @@ import AddTransaction from './components/AddTransaction';
 import TransactionHistory from './components/TransactionHistory';
 import {TransactionProvider} from './Context/GlobalContext';
 
+
 function App() {
   return (
-    <div className='header'>
+    <div className='App'>
       <TransactionProvider>
       <Header />
       <Balance />
       <IncomeExpense />
       <TransactionHistory />
       <AddTransaction />
+      
       </TransactionProvider>
       
     </div>

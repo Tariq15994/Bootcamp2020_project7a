@@ -47,7 +47,7 @@ export default function AddTransaction() {
           <input type="number" value={newAmount === 0 ? "" : newAmount}
             onChange={(e) => {
               setAmount(Number(e.target.value));
-            }} placeholder="Enter amount..." />
+            }} placeholder="Enter amount..." required/>
         </div>
         <button className="submit">Submit Transaction</button>
       </form>

@@ -65,9 +65,9 @@
   justify-content: space-between;
   box-shadow: 0 0 10px gray;
   padding: 5px 0px;
-  color: black;
+  color: rgb(255, 255, 255);
   margin: 5px 1px 10px 0px;
-  background-color: rgb(255, 253, 253);
+  background-color: rgb(0, 0, 0);
 }
 .empty{
   
@@ -79,7 +79,7 @@
 }
 .delete-btn {
   cursor: pointer;
-  background-color: #bd0606;
+  background-color: #000000;
   color: rgb(255, 255, 255);
   border: none;
   font-size: 20px;
